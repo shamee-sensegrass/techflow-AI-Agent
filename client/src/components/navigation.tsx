@@ -1,6 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Bot, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useAuth } from "@/lib/auth";
 import { useState } from "react";
 
@@ -22,10 +22,12 @@ export function Navigation() {
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center space-x-2 cursor-pointer">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center">
-                <Bot className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-slate-900">Coworker-AI</span>
+              <img
+                src="/anvita-logo.png"
+                alt="Anvita.ai Logo"
+                className="h-8 w-auto"
+              />
+              <span className="text-xl font-bold text-slate-900">Anvita.ai</span>
             </div>
           </Link>
 
@@ -33,71 +35,36 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             {!user ? (
               <>
-                <a 
-                  href="#features" 
-                  className="text-slate-600 hover:text-blue-600 font-medium transition-colors"
-                >
-                  Features
-                </a>
-                <a 
-                  href="#agents" 
-                  className="text-slate-600 hover:text-blue-600 font-medium transition-colors"
-                >
-                  AI Agents
-                </a>
+                <a href="#features" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Features</a>
+                <a href="#agents" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">AI Agents</a>
                 <Link href="/pricing">
                   <span className={`font-medium transition-colors cursor-pointer ${
-                    isActive('/pricing') 
-                      ? 'text-blue-600' 
-                      : 'text-slate-600 hover:text-blue-600'
-                  }`}>
-                    Pricing
-                  </span>
+                    isActive('/pricing') ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'
+                  }`}>Pricing</span>
                 </Link>
-                <a 
-                  href="#contact" 
-                  className="text-slate-600 hover:text-blue-600 font-medium transition-colors"
-                >
-                  Contact
-                </a>
+                <a href="#contact" className="text-slate-600 hover:text-blue-600 font-medium transition-colors">Contact</a>
               </>
             ) : (
               <>
                 <Link href="/dashboard">
                   <span className={`font-medium transition-colors cursor-pointer ${
-                    isActive('/dashboard') 
-                      ? 'text-blue-600' 
-                      : 'text-slate-600 hover:text-blue-600'
-                  }`}>
-                    Dashboard
-                  </span>
+                    isActive('/dashboard') ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'
+                  }`}>Dashboard</span>
                 </Link>
                 <Link href="/agents">
                   <span className={`font-medium transition-colors cursor-pointer ${
-                    isActive('/agents') 
-                      ? 'text-blue-600' 
-                      : 'text-slate-600 hover:text-blue-600'
-                  }`}>
-                    Agents
-                  </span>
+                    isActive('/agents') ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'
+                  }`}>Agents</span>
                 </Link>
                 <Link href="/analytics">
                   <span className={`font-medium transition-colors cursor-pointer ${
-                    isActive('/analytics') 
-                      ? 'text-blue-600' 
-                      : 'text-slate-600 hover:text-blue-600'
-                  }`}>
-                    Analytics
-                  </span>
+                    isActive('/analytics') ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'
+                  }`}>Analytics</span>
                 </Link>
                 <Link href="/pricing">
                   <span className={`font-medium transition-colors cursor-pointer ${
-                    isActive('/pricing') 
-                      ? 'text-blue-600' 
-                      : 'text-slate-600 hover:text-blue-600'
-                  }`}>
-                    Pricing
-                  </span>
+                    isActive('/pricing') ? 'text-blue-600' : 'text-slate-600 hover:text-blue-600'
+                  }`}>Pricing</span>
                 </Link>
               </>
             )}
@@ -107,31 +74,16 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-4">
             {user ? (
               <div className="flex items-center space-x-4">
-                <span className="text-slate-600">
-                  {user.firstName} {user.lastName}
-                </span>
-                <Button 
-                  variant="ghost" 
-                  onClick={logout}
-                  className="text-slate-600 hover:text-blue-600"
-                >
-                  Sign Out
-                </Button>
+                <span className="text-slate-600">{user.firstName} {user.lastName}</span>
+                <Button variant="ghost" onClick={logout} className="text-slate-600 hover:text-blue-600">Sign Out</Button>
               </div>
             ) : (
               <>
                 <Link href="/login">
-                  <Button 
-                    variant="ghost" 
-                    className="text-slate-600 hover:text-blue-600"
-                  >
-                    Sign In
-                  </Button>
+                  <Button variant="ghost" className="text-slate-600 hover:text-blue-600">Sign In</Button>
                 </Link>
                 <Link href="/signup">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                    Get Started
-                  </Button>
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white">Get Started</Button>
                 </Link>
               </>
             )}
@@ -144,11 +96,7 @@ export function Navigation() {
               size="sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
@@ -159,100 +107,37 @@ export function Navigation() {
             <div className="flex flex-col space-y-4">
               {!user ? (
                 <>
-                  <a 
-                    href="#features" 
-                    className="text-slate-600 hover:text-blue-600 font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Features
-                  </a>
-                  <a 
-                    href="#agents" 
-                    className="text-slate-600 hover:text-blue-600 font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    AI Agents
-                  </a>
+                  <a href="#features" className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Features</a>
+                  <a href="#agents" className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>AI Agents</a>
                   <Link href="/pricing">
-                    <span 
-                      className="text-slate-600 hover:text-blue-600 font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Pricing
-                    </span>
+                    <span className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Pricing</span>
                   </Link>
-                  <a 
-                    href="#contact" 
-                    className="text-slate-600 hover:text-blue-600 font-medium"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Contact
-                  </a>
+                  <a href="#contact" className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
                   <div className="pt-4 border-t border-slate-200 space-y-2">
                     <Link href="/login">
-                      <Button 
-                        variant="ghost" 
-                        className="w-full justify-start"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        Sign In
-                      </Button>
+                      <Button variant="ghost" className="w-full justify-start" onClick={() => setIsMobileMenuOpen(false)}>Sign In</Button>
                     </Link>
                     <Link href="/signup">
-                      <Button 
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        Get Started
-                      </Button>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setIsMobileMenuOpen(false)}>Get Started</Button>
                     </Link>
                   </div>
                 </>
               ) : (
                 <>
                   <Link href="/dashboard">
-                    <span 
-                      className="text-slate-600 hover:text-blue-600 font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Dashboard
-                    </span>
+                    <span className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Dashboard</span>
                   </Link>
                   <Link href="/agents">
-                    <span 
-                      className="text-slate-600 hover:text-blue-600 font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Agents
-                    </span>
+                    <span className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Agents</span>
                   </Link>
                   <Link href="/analytics">
-                    <span 
-                      className="text-slate-600 hover:text-blue-600 font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Analytics
-                    </span>
+                    <span className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Analytics</span>
                   </Link>
                   <Link href="/pricing">
-                    <span 
-                      className="text-slate-600 hover:text-blue-600 font-medium"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      Pricing
-                    </span>
+                    <span className="text-slate-600 hover:text-blue-600 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Pricing</span>
                   </Link>
                   <div className="pt-4 border-t border-slate-200">
-                    <Button 
-                      variant="ghost" 
-                      onClick={() => {
-                        logout();
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className="w-full justify-start text-slate-600"
-                    >
-                      Sign Out
-                    </Button>
+                    <Button variant="ghost" onClick={() => { logout(); setIsMobileMenuOpen(false); }} className="w-full justify-start text-slate-600">Sign Out</Button>
                   </div>
                 </>
               )}
